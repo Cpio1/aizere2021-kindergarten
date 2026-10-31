@@ -25,6 +25,12 @@ export function PhotoPlaceholder({ className }: { className?: string }) {
   );
 }
 
+/**
+ * Wide photos (group shots) get a 4:3 frame instead of a tall one, so children
+ * at the edges are not cropped away; portrait photos keep the original frame.
+ */
+export const isLandscape = (image: SiteImage | null) => !!image && image.width > image.height * 1.1;
+
 type PhotoProps = {
   image: SiteImage | null;
   alt: string;

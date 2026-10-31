@@ -6,7 +6,7 @@ import type { SiteImage } from "@/lib/images";
 import { btn, WhatsAppButton } from "../shared/Actions";
 import { cn } from "../shared/cn";
 import { Cloud, Flower, Sparkle, Squiggle, Star } from "../shared/Decor";
-import { FramePhoto } from "../shared/Photo";
+import { FramePhoto, isLandscape } from "../shared/Photo";
 
 export function Hero({ image }: { image: SiteImage | null }) {
   const { t } = useLanguage();
@@ -64,9 +64,14 @@ export function Hero({ image }: { image: SiteImage | null }) {
           </ul>
         </div>
 
-        <div className="relative mx-auto w-full max-w-[min(460px,calc(min(64vh,580px)*0.8))]">
+        <div
+          className={cn(
+            "relative mx-auto w-full",
+            isLandscape(image) ? "max-w-[460px]" : "max-w-[min(460px,calc(min(64vh,580px)*0.8))]",
+          )}
+        >
           <div className="absolute inset-0 translate-x-5 translate-y-5 arch bg-sun" aria-hidden="true" />
-          <div className="relative aspect-[4/5] w-full overflow-hidden arch border-[6px] border-white bg-lilac shadow-[0_30px_60px_-30px_rgb(48_42_64/0.45)]">
+          <div className={cn("relative w-full overflow-hidden arch", isLandscape(image) ? "aspect-[4/3]" : "aspect-[4/5]", "border-[6px] border-white bg-lilac shadow-[0_30px_60px_-30px_rgb(48_42_64/0.45)]")}>
             <FramePhoto image={image} alt={h.photoAlt} sizes="(min-width: 1024px) 460px, 100vw" priority />
           </div>
           <Star className="animate-sway absolute -top-3 -left-6 w-14 text-sun" />

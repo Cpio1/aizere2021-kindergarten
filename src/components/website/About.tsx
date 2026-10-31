@@ -5,7 +5,7 @@ import { useLanguage } from "@/i18n/LanguageProvider";
 import type { SiteImage } from "@/lib/images";
 import { cn } from "../shared/cn";
 import { Flower, Sparkle, Sun } from "../shared/Decor";
-import { FramePhoto } from "../shared/Photo";
+import { FramePhoto, isLandscape } from "../shared/Photo";
 import { Reveal } from "../shared/Reveal";
 import { SectionHeading } from "../shared/SectionHeading";
 
@@ -24,7 +24,12 @@ export function About({ image }: { image: SiteImage | null }) {
       <div className="mx-auto grid max-w-[1200px] grid-cols-[0.9fr_1.1fr] items-center gap-16 px-8">
         <Reveal className="relative mx-auto w-full max-w-[440px]">
           <div className="blob absolute -inset-5 bg-mint" aria-hidden="true" />
-          <div className="relative aspect-[1/1.05] overflow-hidden rounded-[46%_54%_42%_58%/52%_44%_56%_48%] border-[6px] border-white bg-lilac shadow-[0_30px_60px_-34px_rgb(48_42_64/0.5)]">
+          <div
+            className={cn(
+              "relative overflow-hidden rounded-[46%_54%_42%_58%/52%_44%_56%_48%] border-[6px] border-white bg-lilac shadow-[0_30px_60px_-34px_rgb(48_42_64/0.5)]",
+              isLandscape(image) ? "aspect-[4/3]" : "aspect-[1/1.05]",
+            )}
+          >
             <FramePhoto image={image} alt={a.photoAlt} sizes="440px" />
           </div>
           <Sun className="animate-sway-slow absolute -top-6 -right-4 w-20 text-sun" />

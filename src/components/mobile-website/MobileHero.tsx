@@ -6,7 +6,7 @@ import type { SiteImage } from "@/lib/images";
 import { btn, WhatsAppButton } from "../shared/Actions";
 import { cn } from "../shared/cn";
 import { Sparkle, Star } from "../shared/Decor";
-import { FramePhoto } from "../shared/Photo";
+import { FramePhoto, isLandscape } from "../shared/Photo";
 
 export function MobileHero({ image }: { image: SiteImage | null }) {
   const { t } = useLanguage();
@@ -22,10 +22,10 @@ export function MobileHero({ image }: { image: SiteImage | null }) {
       <div className="blob pointer-events-none absolute -top-16 -right-24 h-72 w-80 bg-lilac/70" aria-hidden="true" />
 
       <div className="relative mx-auto max-w-2xl px-4 pt-5 pb-10">
-        <div className="relative mx-auto w-[min(78%,330px)]">
+        <div className={cn("relative mx-auto", isLandscape(image) ? "w-[min(94%,440px)]" : "w-[min(78%,330px)]")}>
           <div className="absolute inset-0 translate-x-3 translate-y-3 arch bg-sun" aria-hidden="true" />
-          <div className="relative aspect-[5/6] overflow-hidden arch border-4 border-white bg-lilac shadow-[0_20px_40px_-24px_rgb(48_42_64/0.5)]">
-            <FramePhoto image={image} alt={h.photoAlt} sizes="(max-width: 430px) 78vw, 330px" priority />
+          <div className={cn("relative overflow-hidden arch", isLandscape(image) ? "aspect-[4/3]" : "aspect-[5/6]", "border-4 border-white bg-lilac shadow-[0_20px_40px_-24px_rgb(48_42_64/0.5)]")}>
+            <FramePhoto image={image} alt={h.photoAlt} sizes={isLandscape(image) ? "(max-width: 470px) 94vw, 440px" : "(max-width: 430px) 78vw, 330px"} priority />
           </div>
           <Star className="animate-sway-soft pointer-events-none absolute -top-2 -left-4 w-9 text-sun" />
           <Sparkle className="pointer-events-none absolute top-10 -right-4 w-5 text-violet" />

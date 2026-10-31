@@ -36,7 +36,7 @@ export const site = {
    * Link to the folder with documents (Google Drive, Яндекс Диск, …).
    * While it is null the button in the «Құжаттар / Документы» section is disabled.
    */
-  documentsUrl: null as string | null,
+  documentsUrl: "https://drive.google.com/drive/folders/1Nv7tM__GNDLfZYZq_N6-2dtbmBtPOp0T" as string | null,
 
   /**
    * 2GIS map. Paste the embed (iframe src) link into mapEmbedUrl and the page link into mapUrl.
