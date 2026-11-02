@@ -27,7 +27,7 @@ export const site = {
     handle: "@aizere_2021_balabakshasy",
     url: "https://www.instagram.com/aizere_2021_balabakshasy/",
   },
-  hours: { opens: "08:00", closes: "18:00", display: "08:00–18:00" },
+  hours: { opens: "07:30", closes: "18:00", display: "07:30–18:00" },
   groups: 3,
   ages: { from: 3, to: 6 },
   mealsPerDay: 4,
